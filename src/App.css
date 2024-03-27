@@ -72,7 +72,7 @@ h1 {
   }
 }
 .button {
-  background-color: purple; /* Green */
+  background-color: #A020F0; /* Green */
   border: none;
   color: white;
   padding: 10px 20px;
@@ -127,7 +127,7 @@ input {
 .copy {
   padding:5px;
   background-color: antiquewhite;
-  color: purple;
+  color: #A020F0;
 }
 .welcome{
   display: flex;
