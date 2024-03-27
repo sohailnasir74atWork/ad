@@ -88,12 +88,19 @@
 .button:hover {
   opacity: 0.8;
 }
-.form{
+.form {
   display: flex;
   flex-direction: column;
-  width:50%;
+  width: 50%;
   margin: auto;
 }
+
+@media only screen and (max-width: 768px) {
+  .form {
+    width: 90%;
+  }
+}
+
 input {
   border: none;
   /* background-color: transparent;  */
