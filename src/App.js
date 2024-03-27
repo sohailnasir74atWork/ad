@@ -175,10 +175,7 @@ function App() {
                   </button>
                 )}
               </form>
-              <br />
-              <button onClick={handleSignOut} className="button">
-                Sign Out
-              </button>
+              
               <p>
                 Share your referral link:
                 <br />{" "}
@@ -186,6 +183,11 @@ function App() {
               </p>
               <button onClick={handleCopy} className="button copy">
                 Copy Link
+              </button>
+              <br />
+
+              <button onClick={handleSignOut} className="button">
+                Sign Out
               </button>
             </>
           ) : (

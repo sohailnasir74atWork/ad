@@ -125,7 +125,7 @@ input {
   color: grey;
 }
 .copy {
-  padding:5px;
+  /* padding:5px; */
   background-color: antiquewhite;
   color: #A020F0;
 }
