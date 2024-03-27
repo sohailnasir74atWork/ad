@@ -189,12 +189,12 @@ function App() {
               </button>
             </>
           ) : (
-            <>
+            <div className="welcome">
               <h1>Welcome to $GQR Official Airdrop Page</h1>
               <button onClick={signInWithGoogle} className="button">
                 JOIN AIRDROP NOW
               </button>
-            </>
+            </div>
           )}
         </div>
       </header>
