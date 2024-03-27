@@ -132,7 +132,7 @@ input {
   /* height: calc( 100% - 100px ); */
 }
 body {
-  overflow-y: scroll; /* Ensures vertical scrolling is still possible */
+  /* overflow-y: scroll;  */
   scrollbar-width: none; /* For Firefox */
 }
 
