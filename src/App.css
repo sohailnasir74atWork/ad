@@ -4,11 +4,18 @@
   
 }
 
-
+body {
+  font-family: 'Lato', sans-serif;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
 
+
+}
+
+h1 {
+  font-size: 20px;
 }
 
 @media (prefers-reduced-motion: no-preference) {
