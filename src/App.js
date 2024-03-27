@@ -22,53 +22,33 @@ function App() {
         fetchUserDetails(currentUser.uid);
       }
     });
-    const queryParams = new URLSearchParams(window.location.search);
-  const referralCode = queryParams.get('referral');
-
-  if (referralCode) {
-    // If there's a referral code, increment the referrer's count
-    incrementReferralCount(referralCode);
-  }
+  
   }, [user]);
 
   const signInWithGoogle = () => {
     signInWithPopup(auth, provider).then((result) => {
-      // This gives you a Google Access Token. You can use it to access the Google API.
-      const token = result.credential.accessToken;
-      // The signed-in user info.
-      const user = result.user;
-  
-      // Check if the user signed in with a referral and if it's their first time
-      const queryParams = new URLSearchParams(window.location.search);
-      const referralCode = queryParams.get('referral');
-  
-      // Reference to the user in your database
-      const userRef = ref(database, `users/${user.uid}`);
-  
-      get(userRef).then((snapshot) => {
-        if (!snapshot.exists()) {
-          console.log("It's a new user!");
-  
-          // New user setup here (e.g., setting initial values in the database)
-          // Also, this is where you'd increment the referrer's count, if a referralCode is present
-          if (referralCode) {
-            incrementReferralCount(referralCode);
-          }
-        } else {
-          console.log("Welcome back!");
+        const user = result.user;
+        const queryParams = new URLSearchParams(window.location.search);
+        const referralCode = queryParams.get('referral');
+
+        if (referralCode) {
+            // Check if it's the user's first time logging in by checking their existence in the database
+            const newUserRef = ref(database, `users/${user.uid}`);
+            get(newUserRef).then((snapshot) => {
+                if (!snapshot.exists()) {
+                    // It's a new user, so increment the referrer's count
+                    incrementReferralCount(referralCode);
+                    
+                    // Set up new user's data here, including marking them as having signed up (if you track that)
+                }
+                // Additional logic for setting up or updating the user's own data can go here
+            });
         }
-      });
     }).catch((error) => {
-      // Handle Errors here.
-      var errorCode = error.code;
-      var errorMessage = error.message;
-      // The email of the user's account used.
-      var email = error.email;
-      // The firebase.auth.AuthCredential type that was used.
-      var credential = error.credential;
-      // ...
+        console.error("Error with Google sign-in:", error);
     });
-  };
+};
+
   
 
   const handleSignOut = () => {
@@ -83,7 +63,7 @@ function App() {
     const referrerRef = ref(database, `users/${referralCode}/referralCount`);
     runTransaction(referrerRef, (currentCount) => {
       // If null, initialize to 0 before incrementing
-      return (currentCount || 0) + 1;
+      return currentCount + 1;
     }).then(() => console.log("Referral count incremented"))
       .catch((error) => console.error("Failed to increment referral count:", error));
   };
@@ -97,7 +77,7 @@ function App() {
         setTelegramHandle(data.telegramHandle || "");
         setRetweetUrl(data.retweetUrl || "");
         setHasSubmitted(data.hasSubmitted || false); // Set based on user data
-        if (data.referralCount !== undefined) {
+        if (data.referralCount) {
               setReferel(data.referralCount)       }
       } else {
         // New user setup
