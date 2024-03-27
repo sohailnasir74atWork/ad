@@ -130,7 +130,7 @@ function App() {
     <div className="App">
       <ToastContainer />
       <header className="App-header">
-        <div className="App-header-content">
+        
           {user ? (
             <>
               <h2>Welcome, {user.displayName}!</h2>
@@ -198,7 +198,6 @@ function App() {
               </button>
             </div>
           )}
-        </div>
       </header>
     </div>
   );
