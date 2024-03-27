@@ -1,10 +1,14 @@
 .App {
   text-align: center;
+  color: white;
+  
 }
+
 
 .App-logo {
   height: 40vmin;
   pointer-events: none;
+
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -14,14 +18,37 @@
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  position: relative;
+  background-image: url('https://res.cloudinary.com/dgupxycnh/image/upload/v1711570334/12244_1_ngvzh0.webp');
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  
+}
+
+.App-header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to right, rgba(1, 27, 47, 0.85), rgba(1, 8, 30, 0.85));
+  z-index: 1;
+}
+.App-header-content {
+  position: relative;
+  z-index: 2; /* Higher than the overlay's z-index */
+  }
+.label{
+  text-align: left;
+  padding-left: 5px;
+  font-size: 12px;
 }
 
 .App-link {
@@ -35,4 +62,50 @@
   to {
     transform: rotate(360deg);
   }
+}
+.button {
+  background-color: purple; /* Green */
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+.button-update {
+  background-color: #2196f3; /* Blue */
+}
+
+.button-submit {
+  background-color: #4caf50; /* Green */
+}
+
+.button:hover {
+  opacity: 0.8;
+}
+.form{
+  display: flex;
+  flex-direction: column;
+  width:50%;
+  margin: auto;
+}
+input {
+  border: none;
+  /* background-color: transparent;  */
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 8px;
+  outline: none; /* Removes the outline to further clean up the styling */
+  color: grey;
 }
