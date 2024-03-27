@@ -98,7 +98,7 @@ h1 {
 .form {
   display: flex;
   flex-direction: column;
-  width: 50%;
+  width: 100%;
   margin: auto;
 }
 
@@ -122,4 +122,9 @@ input {
   border-radius: 8px;
   outline: none; /* Removes the outline to further clean up the styling */
   color: grey;
+}
+.copy {
+  padding:5px;
+  background-color: antiquewhite;
+  color: purple;
 }

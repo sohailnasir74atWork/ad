@@ -58,7 +58,9 @@ function App() {
     });
   };
 
-  
+  const handleCopy = ()=>{
+
+  }
 
   return (
     <div className="App">
@@ -90,7 +92,8 @@ function App() {
             </form>
             <br/>
             <button onClick={handleSignOut} className='button'>Sign Out</button>
-            <p>Share your referral link: <code>{`${window.location.origin}?referral=${user.uid}`}</code></p>
+            <p>Share your referral link:<br/> <code>{`${window.location.origin}?referral=${user.uid}`}</code></p>
+            <button onClick={handleCopy} className='button copy'>Copy Link</button>
           </>
         ) : (
           <>
