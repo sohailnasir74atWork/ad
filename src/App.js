@@ -173,7 +173,7 @@ function App() {
             <form className="form" onSubmit={handleSubmit}>
               <div className="label-container">
                 <span className="label-1">
-                  1. Follow X ( Twitter ):{" "}
+                  1. Follow us on our official Twitter channel, X. :{" "}
                   <a href="https://twitter.com/gqrapp" target="_blank">Click here</a>
                 </span>
                 <span className="label-2">Score: 1000</span>
@@ -185,7 +185,7 @@ function App() {
                 onChange={(e) => setTwitterHandle(e.target.value)}
               />
               <div className="label-container">
-                <span className="label-1">2. Submit a X repost link ( retweet ):{" "}</span>
+                <span className="label-1">2. Submit a repost link (retweet) for X. :{" "}</span>
                 <span className="label-2">Score: 1000</span>
               </div>
               <input
@@ -196,20 +196,20 @@ function App() {
               />
               <div className="label-container">
                 <span className="label-1">
-                  3. Join Official Telegram Announcement Channel:
+                  3. Join our Official Telegram Announcement Channel:
                   {" "}<a href="https://t.me/genqr_app" target="_blank">Click here</a>
                 </span>
                 <span className="label-2">Score: 1000</span>
               </div>
               <input
                 type="text"
-                placeholder="@telegramHandler"
+                placeholder="@telegramHandle"
                 value={telegramHandle}
                 onChange={(e) => setTelegramHandle(e.target.value)}
               />
               <div className="label-container">
                 <span className="label-1">
-                  4. Join Official Community Group:
+                  4. Join Official Telegram Community Group:
                   {" "}<a href="https://t.me/genqr_app" target="_blank">Click here</a>
                 </span>
                 <span className="label-2">Score: 1000</span>
@@ -233,7 +233,7 @@ function App() {
                 onChange={(e) => setFacebook(e.target.value)}
               />{" "}
               <div className="label-container">
-                <span className="label-1">6. Share facebook Pin Post</span>
+                <span className="label-1">6. Submit Share facebook Pin Post url</span>
                 <span className="label-2">Score: 1000</span>
               </div>
               <input
