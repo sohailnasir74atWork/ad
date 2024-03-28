@@ -131,7 +131,7 @@ input {
   font-size: 16px;
   font-weight: 700;
   margin: 4px 2px;
-  cursor: pointer;
+  /* cursor: pointer; */
   border-radius: 8px;
   outline: none; /* Removes the outline to further clean up the styling */
   color: #A020F0;
