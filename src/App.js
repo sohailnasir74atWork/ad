@@ -17,6 +17,8 @@ function App() {
   const [tgAnounc, setTGaANOUC] = useState("");
   const [hasSubmitted, setHasSubmitted] = useState(false);
   const [referel, setReferel] = useState(0);
+  const [wallet, setWallet] = useState(0);
+
   const [score, setScore] = useState(0);
   const calculateScore = () => {
     let totalScore = 0;
@@ -92,6 +94,7 @@ function App() {
         setFacebook(data.facebook || "");
         setReddit(data.reddit || "");
         setfacebookPost(data.facebookPost || "");
+        setWallet(data.wallet || "");
         setScore(data.score || "");
         setTGaANOUC(data.tgAnounc || "");
 
@@ -126,6 +129,7 @@ function App() {
       tgAnounc: tgAnounc,
       hasSubmitted: true, // Update submission status
       score: newScore,
+      wallet: wallet,
     })
       .then(() => {
         setHasSubmitted(true);
@@ -169,7 +173,7 @@ function App() {
             <form className="form" onSubmit={handleSubmit}>
               <div className="label-container">
                 <span className="label-1">
-                  1. Follow Twitter:{" "}
+                  1. Follow X ( Twitter ):{" "}
                   <a href="https://twitter.com/gqrapp">Click here</a>
                 </span>
                 <span className="label-2">Score: 1000</span>
@@ -181,7 +185,7 @@ function App() {
                 onChange={(e) => setTwitterHandle(e.target.value)}
               />
               <div className="label-container">
-                <span className="label-1">2. Submit twitter tetweet link:</span>
+                <span className="label-1">2. Submit a X repost link ( retweet ):{" "}</span>
                 <span className="label-2">Score: 1000</span>
               </div>
               <input
@@ -193,7 +197,7 @@ function App() {
               <div className="label-container">
                 <span className="label-1">
                   3. Join Official Telegram Announcement Channel:
-                  <a href="https://t.me/genqr_app">Click here</a>
+                  {" "}<a href="https://t.me/genqr_app">Click here</a>
                 </span>
                 <span className="label-2">Score: 1000</span>
               </div>
@@ -206,7 +210,7 @@ function App() {
               <div className="label-container">
                 <span className="label-1">
                   4. Join Official Community Group:
-                  <a href="https://t.me/genqr_app">Click here</a>
+                  {" "}<a href="https://t.me/genqr_app">Click here</a>
                 </span>
                 <span className="label-2">Score: 1000</span>
               </div>
@@ -218,7 +222,7 @@ function App() {
               />
               <div className="label-container">
                 <span className="label-1">
-                  5. Follow facebook page: <a href="https://www.facebook.com/genqrapp">Click here</a>
+                  5. Follow facebook page:{" "} <a href="https://www.facebook.com/genqrapp">Click here</a>
                 </span>
                 <span className="label-2">Score: 1000</span>
               </div>
@@ -239,7 +243,7 @@ function App() {
                 onChange={(e) => setfacebookPost(e.target.value)}
               />
               <div className="label-container">
-                <span className="label-1">7. Join Reddit: <a href="https://www.reddit.com/user/genqrapp/">Click here</a></span>
+                <span className="label-1">7. Join Reddit:{" "} <a href="https://www.reddit.com/user/genqrapp/">Click here</a></span>
                 <span className="label-2">Score: 1000</span>
               </div>
               <input
@@ -247,6 +251,16 @@ function App() {
                 placeholder="@redditUserName"
                 value={reddit}
                 onChange={(e) => setReddit(e.target.value)}
+              />
+               <div className="label-container">
+                <span className="label-1">8. Submit BSC wallet to receive airdrop:{" "} <a href=""></a></span>
+              </div>
+              <input
+                type="text"
+                placeholder="0x1234aBcdEF5678GhIJ90KlMNOpqRsTUVwXYZabcD
+                "
+                value={wallet}
+                onChange={(e) => setWallet(e.target.value)}
               />
               <br />
               {!hasSubmitted ? ( // Show submit for new users or if editing
@@ -285,8 +299,7 @@ function App() {
             </button>
           </div>
         )}
-        <br/>
-                  <p><span>Note: </span>We will verify all participants in the airdrop. Any duplicates or fraudulent entries will be removed from the list.</p>
+        <br/><p><span>Note: </span>We will verify all participants in the airdrop. Any duplicates or fraudulent entries will be removed from the list.</p>
       </header>
     </div>
   );
