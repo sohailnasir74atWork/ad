@@ -9,11 +9,31 @@ import "react-toastify/dist/ReactToastify.css";
 function App() {
   const [user, setUser] = useState(null);
   const [twitterHandle, setTwitterHandle] = useState("");
+  const [reddit, setReddit] = useState("");
+  const [facebook, setFacebook] = useState("");
+  const [facebookPost, setfacebookPost] = useState("");
   const [telegramHandle, setTelegramHandle] = useState("");
   const [retweetUrl, setRetweetUrl] = useState("");
+  const [tgAnounc, setTGaANOUC] = useState("");
+
   const [hasSubmitted, setHasSubmitted] = useState(false); 
   const [referel, setReferel] = useState(0); 
+  const [score, setScore] = useState(0);
+  const calculateScore = () => {
+    let totalScore = 0;
+    // Define fixed score per field
+    const scorePerField = 1000; // Adjust this value as needed
+    // Count filled fields and calculate total score
+    if (twitterHandle) totalScore += scorePerField;
+    if (retweetUrl) totalScore += scorePerField;
+    if (telegramHandle) totalScore += scorePerField;
+    if (facebook) totalScore += scorePerField;
+    if (facebookPost) totalScore += scorePerField;
+    if (reddit) totalScore += scorePerField;
+    if (tgAnounc) totalScore += scorePerField;
 
+    return totalScore;
+  };
 
   useEffect(() => {
     onAuthStateChanged(auth, (currentUser) => {
@@ -51,14 +71,7 @@ function App() {
 
   
 
-  const handleSignOut = () => {
-    signOut(auth).then(() => {
-      setTwitterHandle("");
-      setTelegramHandle("");
-      setRetweetUrl("");
-      setHasSubmitted(false);
-    });
-  };
+ 
   const incrementReferralCount = (referralCode) => {
     const referrerRef = ref(database, `users/${referralCode}/referralCount`);
     runTransaction(referrerRef, (currentCount) => {
@@ -76,7 +89,13 @@ function App() {
         setTwitterHandle(data.twitterHandle || "");
         setTelegramHandle(data.telegramHandle || "");
         setRetweetUrl(data.retweetUrl || "");
-        setHasSubmitted(data.hasSubmitted || false); // Set based on user data
+        setFacebook(data.facebook || "");
+        setReddit(data.reddit || "");
+        setfacebookPost(data.facebookPost || "");
+        setScore(data.score || '')
+        setTGaANOUC(data.tgAnounc || '')
+
+         setHasSubmitted(data.hasSubmitted || false); // Set based on user data
         if (data.referralCount) {
               setReferel(data.referralCount)       }
       } else {
@@ -93,12 +112,19 @@ function App() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    const newScore = calculateScore();
     const userRef = ref(database, `users/${user.uid}`);
     update(userRef, {
       twitterHandle: twitterHandle,
       telegramHandle: telegramHandle,
       retweetUrl: retweetUrl,
+      facebook: facebook,
+      telegramHandle: telegramHandle,
+      reddit: reddit,
+      facebookPost: facebookPost,
+      tgAnounc: tgAnounc,
       hasSubmitted: true, // Update submission status
+      score:newScore
     })
       .then(() => {
         setHasSubmitted(true);
@@ -134,28 +160,70 @@ function App() {
           {user ? (
             <>
               <h2>Welcome, {user.displayName}!</h2>
-              <p>Referel Score : {referel}</p>
+              <p>Referel : {referel}</p>
+              <p>Account Score : {score}</p>
               <form className="form" onSubmit={handleSubmit}>
-                <span className="label">@twitterID</span>
+                <div className="label-container">
+                <span className="label-1">1. Follow Twitter: <a href="https://twitter.com/gqrapp">Click here</a></span>
+                <span className="label-2">Score: 1000</span></div>
                 <input
                   type="text"
                   placeholder="Twitter Handle"
                   value={twitterHandle}
                   onChange={(e) => setTwitterHandle(e.target.value)}
-                />
-                <span className="label">@telegramID</span>
+                /><div className="label-container">
+                  <span className="label-1">2. Submit twitter tetweet link:</span><span className="label-2">Score: 1000</span></div>
+
                 <input
                   type="text"
-                  placeholder="Telegram Handle"
+                  placeholder="Retweet URL"
+                  value={retweetUrl}
+                  onChange={(e) => setRetweetUrl(e.target.value)}
+                />
+                <div className="label-container">
+                 <span className="label-1">3. Join Official Telegram Announcement Channel:<a href="https://t.me/genqr_app">Click here</a></span><span className="label-2">Score: 1000</span></div>
+
+                <input
+                  type="text"
+                  placeholder="@telegramHandler"
                   value={telegramHandle}
                   onChange={(e) => setTelegramHandle(e.target.value)}
                 />
-                <span className="label">Retweet Url</span>
+                <div className="label-container">
+                 <span className="label-1">4. Join Official Community Group:<a href="https://t.me/genqr_app">Click here</a></span><span className="label-2">Score: 1000</span></div>
+
                 <input
                   type="text"
-                  placeholder="Retweet Url"
-                  value={retweetUrl}
-                  onChange={(e) => setRetweetUrl(e.target.value)}
+                  placeholder="@telegramHandler"
+                  value={tgAnounc}
+                  onChange={(e) => setTGaANOUC(e.target.value)}
+                />               
+                  <div className="label-container">
+
+                <span className="label-1">5. Folow facebook page: [Provide the link to your Telegram group]</span><span className="label-2">Score: 1000</span></div>
+
+                <input
+                  type="text"
+                  placeholder="@facebookUserID"
+                  value={facebook}
+                  onChange={(e) => setFacebook(e.target.value)}
+                />                <div className="label-container">
+
+                <span className="label-1">6. Share facebook Pin Post</span><span className="label-2">Score: 1000</span></div>
+                <input
+                  type="text"
+                  placeholder="Share link URL"
+                  value={facebookPost}
+                  onChange={(e) => setfacebookPost(e.target.value)}
+                />
+                <div className="label-container">
+                <span className="label-1">7. Join Reddit</span><span className="label-2">Score: 1000</span></div>
+
+                <input
+                  type="text"
+                  placeholder="@redditUserName"
+                  value={reddit}
+                  onChange={(e) => setReddit(e.target.value)}
                 />
                 <br />
                 {!hasSubmitted ? ( // Show submit for new users or if editing
@@ -181,14 +249,12 @@ function App() {
                 <br />{" "}
                 <code>{`${window.location.origin}?referral=${user.uid}`}</code>
               </p>
-              <button onClick={handleCopy} className="button copy">
+              <button onClick={handleCopy} className="button submit">
                 Copy Link
               </button>
               <br />
 
-              <button onClick={handleSignOut} className="button">
-                Sign Out
-              </button>
+             
             </>
           ) : (
             <div className="welcome">

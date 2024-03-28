@@ -5,7 +5,7 @@
 
   /* height: 100%; */
   /* width: 100%; */
-  margin-top: 150px;
+  margin-top: 30px;
   margin-bottom: 100px;
  
 }
@@ -21,7 +21,9 @@ body {
 
 
 }
-
+a {
+  color: #A020F0;
+}
 h1 {
   font-size: 20px;
 }
@@ -51,12 +53,22 @@ h1 {
 }
 
 
-.label{
+.label-1{
   text-align: left;
   padding-left: 5px;
   font-size: 12px;
+  width:70%
 }
+.label-2{
+  text-align: right;
+  padding-right: 5px;
+  font-size: 12px;
+  width:30%
 
+}
+.label-container{
+display: flex;
+}
 .App-link {
   color: #61dafb;
 }
@@ -73,7 +85,7 @@ h1 {
   background-color: #A020F0; /* Green */
   border: none;
   color: white;
-  padding: 10px 20px;
+  padding: 20px 20px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
@@ -97,7 +109,7 @@ h1 {
 .form {
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: 80%;
   margin: auto;
 }
 
@@ -111,16 +123,17 @@ input {
   border: none;
   /* background-color: transparent;  */
   color: white;
-  padding: 10px 20px;
+  padding: 20px 20px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
+  font-weight: 700;
   margin: 4px 2px;
   cursor: pointer;
   border-radius: 8px;
   outline: none; /* Removes the outline to further clean up the styling */
-  color: grey;
+  color: #A020F0;
 }
 .copy {
   /* padding:5px; */
