@@ -32,7 +32,7 @@ function App() {
     if (facebookPost) totalScore += scorePerField;
     if (reddit) totalScore += scorePerField;
     if (tgAnounc) totalScore += scorePerField;
-    if (score > 0 ) totalScore += (scorePerField + (score * 2000));
+    if (referel > 0 ) totalScore += (scorePerField + (referel * 2000));
 
     return totalScore;
   };
