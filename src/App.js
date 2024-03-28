@@ -218,7 +218,7 @@ function App() {
               />
               <div className="label-container">
                 <span className="label-1">
-                  5. Folow facebook page: <a href="https://www.facebook.com/genqrapp">Click here</a>
+                  5. Follow facebook page: <a href="https://www.facebook.com/genqrapp">Click here</a>
                 </span>
                 <span className="label-2">Score: 1000</span>
               </div>
