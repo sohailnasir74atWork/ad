@@ -15,7 +15,6 @@ function App() {
   const [telegramHandle, setTelegramHandle] = useState("");
   const [retweetUrl, setRetweetUrl] = useState("");
   const [tgAnounc, setTGaANOUC] = useState("");
-
   const [hasSubmitted, setHasSubmitted] = useState(false);
   const [referel, setReferel] = useState(0);
   const [score, setScore] = useState(0);
@@ -131,6 +130,7 @@ function App() {
       .then(() => {
         setHasSubmitted(true);
         // Display a success toast message
+        setScore(newScore)
         toast.success("Information updated successfully!");
       })
       .catch((error) => {
