@@ -218,8 +218,7 @@ function App() {
               />
               <div className="label-container">
                 <span className="label-1">
-                  5. Folow facebook page: [Provide the link to your Telegram
-                  group]
+                  5. Folow facebook page: <a href="ttps://www.facebook.com/genqrapp">Click here</a>
                 </span>
                 <span className="label-2">Score: 1000</span>
               </div>
@@ -240,7 +239,7 @@ function App() {
                 onChange={(e) => setfacebookPost(e.target.value)}
               />
               <div className="label-container">
-                <span className="label-1">7. Join Reddit</span>
+                <span className="label-1">7. Join Reddit: <a href="https://www.reddit.com/user/genqrapp/"></a>Click here</span>
                 <span className="label-2">Score: 1000</span>
               </div>
               <input
