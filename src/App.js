@@ -180,7 +180,7 @@ function App() {
               </div>
               <input
                 type="text"
-                placeholder="Twitter Handle"
+                placeholder="@twitterhandle"
                 value={twitterHandle}
                 onChange={(e) => setTwitterHandle(e.target.value)}
               />
@@ -190,7 +190,7 @@ function App() {
               </div>
               <input
                 type="text"
-                placeholder="Retweet URL"
+                placeholder="Retweet url"
                 value={retweetUrl}
                 onChange={(e) => setRetweetUrl(e.target.value)}
               />
@@ -203,7 +203,7 @@ function App() {
               </div>
               <input
                 type="text"
-                placeholder="@telegramHandle"
+                placeholder="@telegramhandle"
                 value={telegramHandle}
                 onChange={(e) => setTelegramHandle(e.target.value)}
               />
@@ -216,7 +216,7 @@ function App() {
               </div>
               <input
                 type="text"
-                placeholder="@telegramHandler"
+                placeholder="@telegramhandle"
                 value={tgAnounc}
                 onChange={(e) => setTGaANOUC(e.target.value)}
               />
@@ -228,7 +228,7 @@ function App() {
               </div>
               <input
                 type="text"
-                placeholder="@facebookUserID"
+                placeholder="@userid"
                 value={facebook}
                 onChange={(e) => setFacebook(e.target.value)}
               />{" "}
@@ -238,7 +238,7 @@ function App() {
               </div>
               <input
                 type="text"
-                placeholder="Share link URL"
+                placeholder="Post share link"
                 value={facebookPost}
                 onChange={(e) => setfacebookPost(e.target.value)}
               />
@@ -248,7 +248,7 @@ function App() {
               </div>
               <input
                 type="text"
-                placeholder="@redditUserName"
+                placeholder="@username"
                 value={reddit}
                 onChange={(e) => setReddit(e.target.value)}
               />
