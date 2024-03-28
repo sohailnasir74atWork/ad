@@ -26,6 +26,7 @@ function App() {
     let totalScore = 0;
     // Define fixed score per field
     const scorePerField = 1000; // Adjust this value as needed
+    const scorePerRef = 2000;
     // Count filled fields and calculate total score
     if (twitterHandle) totalScore += scorePerField;
     if (retweetUrl) totalScore += scorePerField;
@@ -34,6 +35,7 @@ function App() {
     if (facebookPost) totalScore += scorePerField;
     if (reddit) totalScore += scorePerField;
     if (tgAnounc) totalScore += scorePerField;
+    if(referel > 0 ) totalScore += scorePerField*referel
 
     return totalScore;
   };
@@ -99,20 +101,11 @@ console.log('dcfdc', score)
         setWallet(data.wallet || "");
         setScore(data.score || "");
         setTGaANOUC(data.tgAnounc || "");
-
         setHasSubmitted(data.hasSubmitted || false); // Set based on user data
         if (data.referralCount) {
           setReferel(data.referralCount);
         }
-      } else {
-        // New user setup
-        update(userRef, {
-          twitterHandle: "",
-          telegramHandle: "",
-          hasSubmitted: false,
-          retweetUrl,
-        });
-      }
+      } 
     });
   };
 
@@ -131,12 +124,12 @@ console.log('dcfdc', score)
       tgAnounc: tgAnounc,
       hasSubmitted: true, // Update submission status
       score: newScore,
-      wallet: wallet,
+      wallet: wallet
     })
       .then(() => {
         setHasSubmitted(true);
         // Display a success toast message
-        setScore(newScore)
+        // setScore(newScore)
         toast.success("Information updated successfully!");
       })
       .catch((error) => {
