@@ -26,7 +26,7 @@ function App() {
     let totalScore = 0;
     // Define fixed score per field
     const scorePerField = 1000; // Adjust this value as needed
-    const scorePerRef = 2000;
+    const scorePerRef = 2000*referel;
     // Count filled fields and calculate total score
     if (twitterHandle) totalScore += scorePerField;
     if (retweetUrl) totalScore += scorePerField;
@@ -35,19 +35,40 @@ function App() {
     if (facebookPost) totalScore += scorePerField;
     if (reddit) totalScore += scorePerField;
     if (tgAnounc) totalScore += scorePerField;
-    if(referel > 0 ) totalScore += scorePerField*referel
+    if(referel > 0 ) totalScore += scorePerRef
 
     return totalScore;
   };
 console.log('dcfdc', score)
-  useEffect(() => {
-    onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser);
-      if (currentUser) {
-        fetchUserDetails(currentUser.uid);
-      }
-    });
-  }, [user]);
+useEffect(() => {
+  const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+    setUser(currentUser);
+    if (currentUser) {
+      fetchUserDetails(currentUser.uid);
+    }
+  });
+  return () => unsubscribe();
+}, []);
+
+useEffect(() => {
+  // Assuming calculateScore now directly uses state variables and doesn't need arguments
+  const newScore = calculateScore();
+  if (user && newScore !== score) { // Check if there's a user logged in and if the score has changed
+    updateScore(user.uid, newScore);
+  }
+}, [referel, twitterHandle, retweetUrl, telegramHandle, facebook, facebookPost, reddit, tgAnounc]); // Add all dependencies related to score calculation
+
+const updateScore = async (uid, newScore) => {
+  const userRef = ref(database, `users/${uid}`);
+  try {
+    await update(userRef, { score: newScore });
+    setScore(newScore); // Update local state to reflect the new score
+    console.log("Score updated successfully");
+  } catch (error) {
+    console.error("Failed to update score:", error);
+  }
+};
+
 
   const signInWithGoogle = () => {
     signInWithPopup(auth, provider)
@@ -55,26 +76,50 @@ console.log('dcfdc', score)
         const user = result.user;
         const queryParams = new URLSearchParams(window.location.search);
         const referralCode = queryParams.get("referral");
-
-        if (referralCode) {
-          // Check if it's the user's first time logging in by checking their existence in the database
-          const newUserRef = ref(database, `users/${user.uid}`);
-          get(newUserRef).then((snapshot) => {
-            if (!snapshot.exists()) {
-              // It's a new user, so increment the referrer's count
+  
+        // Reference to the user's data in the database
+        const userRef = ref(database, `users/${user.uid}`);
+        get(userRef).then((snapshot) => {
+          if (!snapshot.exists()) {
+            console.log("New user detected, initializing data...");
+  
+            // Initialize data for new users here
+            const initialUserData = {
+              twitterHandle: "",
+              telegramHandle: "",
+              retweetUrl: "",
+              facebook: "",
+              reddit: "",
+              facebookPost: "",
+              wallet: "",
+              score: 0, // Initial score, adjust as needed
+              tgAnounc: "",
+              hasSubmitted: false,
+              referralCount: 0, // Initialize referral count, adjust as needed
+            };
+  
+            // Update the database with initial user data
+            update(userRef, initialUserData).then(() => {
+              console.log("User data initialized for new user.");
+            }).catch((error) => {
+              console.error("Failed to initialize user data:", error);
+            });
+  
+            // If there's a referral code, handle referral logic
+            if (referralCode) {
               incrementReferralCount(referralCode);
-
-              // Set up new user's data here, including marking them as having signed up (if you track that)
             }
-            // Additional logic for setting up or updating the user's own data can go here
-          });
-        }
+          } else {
+            console.log("Existing user, fetching details...");
+            // fetchUserDetails(user.uid);
+          }
+        });
       })
       .catch((error) => {
         console.error("Error with Google sign-in:", error);
       });
   };
-
+  
   const incrementReferralCount = (referralCode) => {
     const referrerRef = ref(database, `users/${referralCode}/referralCount`);
     runTransaction(referrerRef, (currentCount) => {
@@ -108,7 +153,7 @@ console.log('dcfdc', score)
       } 
     });
   };
-
+ 
   const handleSubmit = (event) => {
     event.preventDefault();
     const newScore = calculateScore();
@@ -129,7 +174,7 @@ console.log('dcfdc', score)
       .then(() => {
         setHasSubmitted(true);
         // Display a success toast message
-        // setScore(newScore)
+        setScore(newScore)
         toast.success("Information updated successfully!");
       })
       .catch((error) => {
