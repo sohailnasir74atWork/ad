@@ -144,7 +144,7 @@ const updateScore = async (uid, newScore) => {
         setReddit(data.reddit || "");
         setfacebookPost(data.facebookPost || "");
         setWallet(data.wallet || "");
-        setScore(data.score || "");
+        setScore(data.score || 0);
         setTGaANOUC(data.tgAnounc || "");
         setHasSubmitted(data.hasSubmitted || false); // Set based on user data
         if (data.referralCount) {
