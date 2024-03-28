@@ -233,7 +233,7 @@ function App() {
                 onChange={(e) => setFacebook(e.target.value)}
               />{" "}
               <div className="label-container">
-                <span className="label-1">6. Submit Share facebook Pin Post url</span>
+                <span className="label-1">6. Share pinned post of our facebook page and submit link</span>
                 <span className="label-2">Score: 1000</span>
               </div>
               <input
@@ -280,7 +280,7 @@ function App() {
                 </button>
               )}
             </form>
-
+                <p>Each Referral Score = 2000</p>
             <p>
               Share your referral link:
               <br />{" "}
