@@ -285,6 +285,8 @@ function App() {
             </button>
           </div>
         )}
+        <br/>
+                  <p><span>Note: </span>We will verify all participants in the airdrop. Any duplicates or fraudulent entries will be removed from the list.</p>
       </header>
     </div>
   );
