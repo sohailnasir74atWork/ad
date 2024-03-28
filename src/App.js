@@ -153,14 +153,17 @@ function App() {
       }
     );
   };
-
+  const capitalizeName = (name) => {
+    const words = name.split(" ");
+    const capitalizedWords = words.map(word => word.charAt(0).toUpperCase() + word.slice(1));    return capitalizedWords.join(" ");
+  };
   return (
     <div className="App">
       <ToastContainer />
       <header className="App-header">
         {user ? (
           <>
-            <h2>Welcome, {user.displayName}!</h2>
+          <h2>Welcome, {capitalizeName(user.displayName)}!</h2>
             <p>Referel : {referel}</p>
             <p>Account Score : {score}</p>
             <form className="form" onSubmit={handleSubmit}>
