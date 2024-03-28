@@ -20,6 +20,8 @@ function App() {
   const [wallet, setWallet] = useState(0);
 
   const [score, setScore] = useState(0);
+
+  
   const calculateScore = () => {
     let totalScore = 0;
     // Define fixed score per field
@@ -32,11 +34,10 @@ function App() {
     if (facebookPost) totalScore += scorePerField;
     if (reddit) totalScore += scorePerField;
     if (tgAnounc) totalScore += scorePerField;
-    if (referel > 0 ) totalScore += (scorePerField + (referel * 2000));
 
     return totalScore;
   };
-
+console.log('dcfdc', score)
   useEffect(() => {
     onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
