@@ -146,6 +146,7 @@ input {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-top: 200px;
 
   /* height: calc( 100% - 100px ); */
 }
