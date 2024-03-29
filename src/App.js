@@ -35,7 +35,7 @@ function App() {
     if (facebookPost) totalScore += scorePerField;
     if (reddit) totalScore += scorePerField;
     if (tgAnounc) totalScore += scorePerField;
-    if(referel > 0 ) totalScore += scorePerRef
+    // if(referel > 0 ) totalScore += scorePerRef
 
     return totalScore;
   };
@@ -50,13 +50,13 @@ useEffect(() => {
   return () => unsubscribe();
 }, []);
 
-useEffect(() => {
-  // Assuming calculateScore now directly uses state variables and doesn't need arguments
-  const newScore = calculateScore();
-  if (user && newScore !== score) { // Check if there's a user logged in and if the score has changed
-    updateScore(user.uid, newScore);
-  }
-}, [referel, twitterHandle, retweetUrl, telegramHandle, facebook, facebookPost, reddit, tgAnounc]); // Add all dependencies related to score calculation
+// useEffect(() => {
+//   // Assuming calculateScore now directly uses state variables and doesn't need arguments
+//   const newScore = calculateScore();
+//   if (user && newScore !== score) { // Check if there's a user logged in and if the score has changed
+//     updateScore(user.uid, newScore);
+//   }
+// }, [referel, twitterHandle, retweetUrl, telegramHandle, facebook, facebookPost, reddit, tgAnounc]); // Add all dependencies related to score calculation
 
 const updateScore = async (uid, newScore) => {
   const userRef = ref(database, `users/${uid}`);
@@ -125,15 +125,27 @@ const updateScore = async (uid, newScore) => {
   
   const incrementReferralCount = (referralCode) => {
     const referrerRef = ref(database, `users/${referralCode}/referralCount`);
+    // Assuming you want to update the score within the same user's data
+    const userScoreRef = ref(database, `users/${referralCode}/score`);
+  
+    // Increment the referral count
     runTransaction(referrerRef, (currentCount) => {
-      // If null, initialize to 0 before incrementing
-      return currentCount + 1;
-    })
-      .then(() => console.log("Referral count incremented"))
-      .catch((error) =>
-        console.error("Failed to increment referral count:", error)
-      );
+      return (currentCount || 0) + 1; // If null, initialize to 0 before incrementing
+    }).then(() => {
+      console.log("Referral count incremented");
+      // Once referral count is incremented, update the score
+      runTransaction(userScoreRef, (currentScore) => {
+        return (currentScore || 0) + 2000; // Assuming each referral increases score by 2000
+      }).then(() => {
+        console.log("Score updated successfully");
+      }).catch((error) => {
+        console.error("Failed to update score:", error);
+      });
+    }).catch((error) => {
+      console.error("Failed to increment referral count:", error);
+    });
   };
+  
 
   const fetchUserDetails = (uid) => {
     const userRef = ref(database, `users/${uid}`);
@@ -308,8 +320,7 @@ const updateScore = async (uid, newScore) => {
               </div>
               <input
                 type="text"
-                placeholder="0x1234aBcdEF5678GhIJ90KlMNOpqRsTUVwXYZabcD
-                "
+                placeholder="0x1234aBcdEF5678GhIJ90KlMNOpqRsTUVwXYZabcD"
                 value={wallet}
                 onChange={(e) => setWallet(e.target.value)}
               />
