@@ -208,8 +208,12 @@ const updateScore = async (uid, newScore) => {
         {user ? (
           <>
           <h2>Welcome, {capitalizeName(user.displayName)}!</h2>
-            <p>Referel : {referel}</p>
-            <p>Account Score : {score}</p>
+          <div>
+            <span className="label-3">Referel : {referel}</span>
+            <br/>
+            <br/>
+
+            <span className="label-3">Account Score : {score}</span></div>
             <form className="form" onSubmit={handleSubmit}>
             <p>Thank you for your interest in participating in our airdrop campaign! Please complete the following tasks to be eligible for the airdrop.</p>
               <div className="label-container">
