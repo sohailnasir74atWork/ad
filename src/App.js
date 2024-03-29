@@ -217,7 +217,7 @@ const updateScore = async (uid, newScore) => {
                   1. Follow Twitter ( X. ): Follow our official Twitter ( X. ) account.{" "}
                   <a href="https://twitter.com/gqrapp" target="_blank">Click here</a>
                 </span>
-                <span className="label-2">Score: 1000</span>
+                <span className="label-2"><span className="label-3">Score: 1000</span></span>
               </div>
               <input
                 type="text"
@@ -227,7 +227,7 @@ const updateScore = async (uid, newScore) => {
               />
               <div className="label-container">
                 <span className="label-1">2. Retweet Pin Tweet: Retweet our pinned tweet on Twitter. Share the link of Retweet.{" "}</span>
-                <span className="label-2">Score: 1000</span>
+                <span className="label-2"><span className="label-3">Score: 1000</span></span>
               </div>
               <input
                 type="text"
@@ -240,7 +240,7 @@ const updateScore = async (uid, newScore) => {
                   3. Subscribe to Telegram Channel: Subscribe to our Telegram channel.
                   {" "}<a href="https://t.me/genqr_app" target="_blank">Click here</a>
                 </span>
-                <span className="label-2">Score: 1000</span>
+                <span className="label-2"><span className="label-3">Score: 1000</span></span>
               </div>
               <input
                 type="text"
@@ -253,7 +253,7 @@ const updateScore = async (uid, newScore) => {
                   4. Join Telegram Group: Join our Telegram group.
                   {" "}<a href="https://t.me/genqr_app" target="_blank">Click here</a>
                 </span>
-                <span className="label-2">Score: 1000</span>
+                <span className="label-2"><span className="label-3">Score: 1000</span></span>
               </div>
               <input
                 type="text"
@@ -265,7 +265,7 @@ const updateScore = async (uid, newScore) => {
                 <span className="label-1">
                   5. Like Facebook Page: Like our Facebook page.{" "} <a href="https://www.facebook.com/genqrapp" target="_blank">Click here</a>
                 </span>
-                <span className="label-2">Score: 1000</span>
+                <span className="label-2"><span className="label-3">Score: 1000</span></span>
               </div>
               <input
                 type="text"
@@ -275,7 +275,7 @@ const updateScore = async (uid, newScore) => {
               />{" "}
               <div className="label-container">
                 <span className="label-1">6. Share Pinned Post on Facebook: Share Pinned Post on Facebook and submit link of the shared post on Facebook.</span>
-                <span className="label-2">Score: 1000</span>
+                <span className="label-2"><span className="label-3">Score: 1000</span></span>
               </div>
               <input
                 type="text"
@@ -284,8 +284,8 @@ const updateScore = async (uid, newScore) => {
                 onChange={(e) => setfacebookPost(e.target.value)}
               />
               <div className="label-container">
-                <span className="label-1">7. Join Reddit: Join our subreddit.{" "} <a href="https://www.reddit.com/user/genqrapp/" target="_blank">Click here</a></span>
-                <span className="label-2">Score: 1000</span>
+                <span className="label-1">7. Join Reddit: Join our subreddit.{" "} <a href="https://www.reddit.com/r/GQR" target="_blank">Click here</a></span>
+                <span className="label-2"><span className="label-3">Score: 1000</span></span>
               </div>
               <input
                 type="text"

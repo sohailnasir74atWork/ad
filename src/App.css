@@ -56,15 +56,24 @@ h1 {
 .label-1{
   text-align: left;
   padding-left: 5px;
-  font-size: 12px;
+  /* font-size: 12px; */
   width:70%
 }
 .label-2{
   text-align: right;
   padding-right: 5px;
   font-size: 12px;
-  width:30%
+  width:30%;
+  display: flex;
+  justify-content: right;
+  align-items: flex-end;
 
+}
+.label-3{
+  padding: 5px 10px;
+  font-size: 12px;
+  background: #A020F0;
+  border-radius: 10px;
 }
 .label-container{
 display: flex;
