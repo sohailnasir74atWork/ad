@@ -211,9 +211,10 @@ const updateScore = async (uid, newScore) => {
             <p>Referel : {referel}</p>
             <p>Account Score : {score}</p>
             <form className="form" onSubmit={handleSubmit}>
+            <p>Thank you for your interest in participating in our airdrop campaign! Please complete the following tasks to be eligible for the airdrop.</p>
               <div className="label-container">
                 <span className="label-1">
-                  1. Follow us on our official Twitter channel, X. :{" "}
+                  1. Follow Twitter ( X. ): Follow our official Twitter ( X. ) account.{" "}
                   <a href="https://twitter.com/gqrapp" target="_blank">Click here</a>
                 </span>
                 <span className="label-2">Score: 1000</span>
@@ -225,7 +226,7 @@ const updateScore = async (uid, newScore) => {
                 onChange={(e) => setTwitterHandle(e.target.value)}
               />
               <div className="label-container">
-                <span className="label-1">2. Submit a repost link (retweet) for X. :{" "}</span>
+                <span className="label-1">2. Retweet Pin Tweet: Retweet our pinned tweet on Twitter. Share the link of Retweet.{" "}</span>
                 <span className="label-2">Score: 1000</span>
               </div>
               <input
@@ -236,7 +237,7 @@ const updateScore = async (uid, newScore) => {
               />
               <div className="label-container">
                 <span className="label-1">
-                  3. Join our Official Telegram Announcement Channel:
+                  3. Subscribe to Telegram Channel: Subscribe to our Telegram channel.
                   {" "}<a href="https://t.me/genqr_app" target="_blank">Click here</a>
                 </span>
                 <span className="label-2">Score: 1000</span>
@@ -249,7 +250,7 @@ const updateScore = async (uid, newScore) => {
               />
               <div className="label-container">
                 <span className="label-1">
-                  4. Join Official Telegram Community Group:
+                  4. Join Telegram Group: Join our Telegram group.
                   {" "}<a href="https://t.me/genqr_app" target="_blank">Click here</a>
                 </span>
                 <span className="label-2">Score: 1000</span>
@@ -262,7 +263,7 @@ const updateScore = async (uid, newScore) => {
               />
               <div className="label-container">
                 <span className="label-1">
-                  5. Follow facebook page:{" "} <a href="https://www.facebook.com/genqrapp" target="_blank">Click here</a>
+                  5. Like Facebook Page: Like our Facebook page.{" "} <a href="https://www.facebook.com/genqrapp" target="_blank">Click here</a>
                 </span>
                 <span className="label-2">Score: 1000</span>
               </div>
@@ -273,7 +274,7 @@ const updateScore = async (uid, newScore) => {
                 onChange={(e) => setFacebook(e.target.value)}
               />{" "}
               <div className="label-container">
-                <span className="label-1">6. Share pinned post of our facebook page and submit link</span>
+                <span className="label-1">6. Share Pinned Post on Facebook: Share Pinned Post on Facebook and submit link of the shared post on Facebook.</span>
                 <span className="label-2">Score: 1000</span>
               </div>
               <input
@@ -283,7 +284,7 @@ const updateScore = async (uid, newScore) => {
                 onChange={(e) => setfacebookPost(e.target.value)}
               />
               <div className="label-container">
-                <span className="label-1">7. Join Reddit:{" "} <a href="https://www.reddit.com/user/genqrapp/" target="_blank">Click here</a></span>
+                <span className="label-1">7. Join Reddit: Join our subreddit.{" "} <a href="https://www.reddit.com/user/genqrapp/" target="_blank">Click here</a></span>
                 <span className="label-2">Score: 1000</span>
               </div>
               <input
@@ -293,7 +294,7 @@ const updateScore = async (uid, newScore) => {
                 onChange={(e) => setReddit(e.target.value)}
               />
                <div className="label-container">
-                <span className="label-1">8. Submit BSC wallet to receive airdrop:{" "} <a href=""></a></span>
+                <span className="label-1">8. Deposit BSC Address: Provide your Binance Smart Chain (BSC) address for token distribution.{" "} <a href=""></a></span>
               </div>
               <input
                 type="text"
@@ -303,6 +304,7 @@ const updateScore = async (uid, newScore) => {
                 onChange={(e) => setWallet(e.target.value)}
               />
               <br />
+              
               {!hasSubmitted ? ( // Show submit for new users or if editing
                 <button
                   type="submit"
@@ -319,6 +321,7 @@ const updateScore = async (uid, newScore) => {
                   Update
                 </button>
               )}
+              <p>Please ensure that you have completed all the tasks accurately. Once done, submit this form, and you will be considered for the airdrop.</p>
             </form>
                 <p>Each Referral Score = 2000</p>
             <p>
