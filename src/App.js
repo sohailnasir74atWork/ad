@@ -96,6 +96,9 @@ const updateScore = async (uid, newScore) => {
               tgAnounc: "",
               hasSubmitted: false,
               referralCount: 0, // Initialize referral count, adjust as needed
+              name: '',
+              email: ''
+
             };
   
             // Update the database with initial user data
@@ -169,7 +172,10 @@ const updateScore = async (uid, newScore) => {
       tgAnounc: tgAnounc,
       hasSubmitted: true, // Update submission status
       score: newScore,
-      wallet: wallet
+      wallet: wallet,
+      name: user.displayName,
+      email:user.email
+
     })
       .then(() => {
         setHasSubmitted(true);
