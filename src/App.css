@@ -178,7 +178,7 @@ display: flex;
 width: 120px;
 justify-content: space-between;
 @media only screen and (max-width: 768px) {
-  width: 80px;
+  width: 100px;
 }
 
 }
@@ -193,7 +193,7 @@ justify-content: space-between;
   /* justify-content: center; */
   cursor: pointer;
   @media only screen and (max-width: 768px) {
-    width: 25px;
+    width: 40px;
   }
   }
   .logo-container-img img{
