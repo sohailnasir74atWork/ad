@@ -229,8 +229,8 @@ useEffect(() => {
       <ToastContainer />
       <header className="App-header">
         <div className="logo-container">
-          <a href="https://genqrapp.com/"><div className="logo-container-img"><img src={logo1}/><span>GenQR Official</span></div></a>
-          <a href="https://generateqrcode.io/"><div className="logo-container-img"><img src={logo2}/><span>MVP Official</span></div></a>
+          <a href="https://genqrapp.com/"><div className="logo-container-img" loading="lazy"><img src={logo1}/><span>GenQR Official</span></div></a>
+          <a href="https://generateqrcode.io/"><div className="logo-container-img"><img src={logo2} loading="lazy"/><span>MVP Official</span></div></a>
         </div>
         {user ? (
           <>
