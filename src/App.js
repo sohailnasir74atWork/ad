@@ -4,6 +4,9 @@ import { auth, database, provider } from "./Code/firebase";
 import { signInWithPopup, onAuthStateChanged, signOut } from "firebase/auth";
 import { ref, get, update, runTransaction } from "firebase/database";
 import { ToastContainer, toast } from "react-toastify";
+import logo1 from "./Assets/scan.png"
+import logo2 from "./Assets/logo-purple.svg"
+
 import "react-toastify/dist/ReactToastify.css";
 
 function App() {
@@ -220,10 +223,15 @@ useEffect(() => {
     const words = name.split(" ");
     const capitalizedWords = words.map(word => word.charAt(0).toUpperCase() + word.slice(1));    return capitalizedWords.join(" ");
   };
+
   return (
     <div className="App">
       <ToastContainer />
       <header className="App-header">
+        <div className="logo-container">
+          <a href="https://genqrapp.com/"><div className="logo-container-img"><img src={logo1}/><span>GenQR Official</span></div></a>
+          <a href="https://generateqrcode.io/"><div className="logo-container-img"><img src={logo2}/><span>MVP Official</span></div></a>
+        </div>
         {user ? (
           <>
           <h2>Welcome, {capitalizeName(user.displayName)}!</h2>
@@ -261,7 +269,7 @@ useEffect(() => {
               <div className="label-container">
                 <span className="label-1">
                   3. Subscribe to Telegram Channel: Subscribe to our Telegram channel.
-                  {" "}<a href="https://t.me/genqr_app" target="_blank">Click here</a>
+                  {" "}<a href="https://t.me/genqrapp" target="_blank">Click here</a>
                 </span>
                 <span className="label-2"><span className="label-3">Score: 1000</span></span>
               </div>
@@ -284,13 +292,13 @@ useEffect(() => {
                 value={tgAnounc}
                 onChange={(e) => setTGaANOUC(e.target.value)}
               />
-              <div className="label-container">
+              {/* <div className="label-container">
                 <span className="label-1">
                   5. Like Facebook Page: Like our Facebook page.{" "} <a href="https://www.facebook.com/genqrapp" target="_blank">Click here</a>
                 </span>
                 <span className="label-2"><span className="label-3">Score: 1000</span></span>
-              </div>
-              <input
+              </div> */}
+              {/* <input
                 type="text"
                 placeholder="@userid"
                 value={facebook}
@@ -305,17 +313,17 @@ useEffect(() => {
                 placeholder="Post share link"
                 value={facebookPost}
                 onChange={(e) => setfacebookPost(e.target.value)}
-              />
-              <div className="label-container">
+              /> */}
+              {/* <div className="label-container">
                 <span className="label-1">7. Join Reddit: Join our subreddit.{" "} <a href="https://www.reddit.com/r/GQR" target="_blank">Click here</a></span>
                 <span className="label-2"><span className="label-3">Score: 1000</span></span>
-              </div>
-              <input
+              </div> */}
+              {/* <input
                 type="text"
                 placeholder="@username"
                 value={reddit}
                 onChange={(e) => setReddit(e.target.value)}
-              />
+              /> */}
                <div className="label-container">
                 <span className="label-1">8. Deposit BSC Address: Provide your Binance Smart Chain (BSC) address for token distribution.{" "} <a href=""></a></span>
               </div>
